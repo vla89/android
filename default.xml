@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <manifest>
-
   <remote  name="aosp"
-           fetch="https://android.googlesource.com"
+           fetch=".."
            review="https://android-review.googlesource.com/" />
   <default revision="refs/tags/android-9.0.0_r51"
            remote="aosp"
-           sync-c="true"
-           sync-j="12" />
-
+           sync-j="4" />
   <project path="build/make" name="platform/build" groups="pdk" >
     <copyfile src="core/root.mk" dest="Makefile" />
     <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
@@ -19,7 +16,7 @@
     <linkfile src="tools" dest="build/tools" />
   </project>
   <project path="build/blueprint" name="platform/build/blueprint" groups="pdk,tradefed" />
-  <project path="build/kati" name="platform/build/kati" revision="refs/tags/android-9.0.0_r51" groups="pdk,tradefed" />
+  <project path="build/kati" name="platform/build/kati" groups="pdk,tradefed" />
   <project path="build/soong" name="platform/build/soong" groups="pdk,tradefed" >
     <linkfile src="root.bp" dest="Android.bp" />
     <linkfile src="bootstrap.bash" dest="bootstrap.bash" />
@@ -57,9 +54,6 @@
   <project path="device/google/accessory/demokit" name="device/google/accessory/demokit" groups="device,pdk" />
   <project path="device/google/atv" name="device/google/atv" groups="device,broadcom_pdk,generic_fs,pdk" />
   <project path="device/google/contexthub" name="device/google/contexthub" groups="device,marlin,pdk" />
-  <project path="device/google/crosshatch" name="device/google/crosshatch" groups="device,crosshatch" />
-  <project path="device/google/crosshatch-kernel" name="device/google/crosshatch-kernel" groups="device,crosshatch" clone-depth="1" />
-  <project path="device/google/crosshatch-sepolicy" name="device/google/crosshatch-sepolicy" groups="device,crosshatch" />
   <project path="device/google/cuttlefish" name="device/google/cuttlefish" groups="device" />
   <project path="device/google/cuttlefish_common" name="device/google/cuttlefish_common" groups="device" />
   <project path="device/google/cuttlefish_kernel" name="device/google/cuttlefish_kernel" groups="device" clone-depth="1" />
@@ -168,7 +162,7 @@
   <project path="external/guice" name="platform/external/guice" groups="pdk" />
   <project path="external/hamcrest" name="platform/external/hamcrest" groups="pdk" />
   <project path="external/harfbuzz_ng" name="platform/external/harfbuzz_ng" groups="pdk,qcom_msm8x26" />
-  <project path="external/honggfuzz" name="platform/external/honggfuzz" revision="refs/tags/android-9.0.0_r51" groups="pdk" />
+  <project path="external/honggfuzz" name="platform/external/honggfuzz" groups="pdk" />
   <project path="external/hyphenation-patterns" name="platform/external/hyphenation-patterns" groups="pdk" />
   <project path="external/icu" name="platform/external/icu" groups="pdk" />
   <project path="external/ImageMagick" name="platform/external/ImageMagick" groups="pdk" />
@@ -397,7 +391,7 @@
   <project path="external/webp" name="platform/external/webp" groups="pdk,qcom_msm8x26" />
   <project path="external/webrtc" name="platform/external/webrtc" groups="pdk" />
   <project path="external/webview_support_interfaces" name="platform/external/webview_support_interfaces" groups="pdk" />
-  <project path="external/wpa_supplicant_8" name="platform/external/wpa_supplicant_8" revision="refs/tags/android-9.0.0_r51" groups="pdk" />
+  <project path="external/wpa_supplicant_8" name="platform/external/wpa_supplicant_8" groups="pdk" />
   <project path="external/wycheproof" name="platform/external/wycheproof" groups="pdk" />
   <project path="external/x264" name="platform/external/x264" groups="pdk" />
   <project path="external/xmlrpcpp" name="platform/external/xmlrpcpp" groups="pdk" />
@@ -416,7 +410,7 @@
   <project path="frameworks/hardware/interfaces" name="platform/frameworks/hardware/interfaces" groups="pdk" />
   <project path="frameworks/layoutlib" name="platform/frameworks/layoutlib" groups="pdk-cw-fs,pdk-fs" />
   <project path="frameworks/minikin" name="platform/frameworks/minikin" groups="pdk-cw-fs,pdk-fs" />
-  <project path="frameworks/ml" name="platform/frameworks/ml" revision="refs/tags/android-9.0.0_r51" groups="pdk" />
+  <project path="frameworks/ml" name="platform/frameworks/ml" groups="pdk" />
   <project path="frameworks/multidex" name="platform/frameworks/multidex" groups="pdk-cw-fs,pdk-fs" />
   <project path="frameworks/native" name="platform/frameworks/native" groups="pdk" />
   <project path="frameworks/opt/bitmap" name="platform/frameworks/opt/bitmap" groups="pdk-fs" />
@@ -488,16 +482,6 @@
   <project path="hardware/qcom/msm8x84" name="platform/hardware/qcom/msm8x84" groups="qcom_msm8x84,pdk-qcom" />
   <project path="hardware/qcom/neuralnetworks/hvxservice" name="platform/hardware/qcom/neuralnetworks/hvxservice" groups="wahoo" />
   <project path="hardware/qcom/power" name="platform/hardware/qcom/power" groups="qcom,pdk-qcom" />
-  <project path="hardware/qcom/sdm845/bt" name="platform/hardware/qcom/sdm845/bt" groups="qcom_sdm845" />
-  <project path="hardware/qcom/sdm845/data/ipacfg-mgr" name="platform/hardware/qcom/sdm845/data/ipacfg-mgr" revision="refs/tags/android-9.0.0_r47" groups="vendor,qcom_sdm845" >
-    <linkfile src="os_pickup.mk" dest="hardware/qcom/sdm845/Android.mk" />
-    <linkfile dest="hardware/qcom/sdm845/Android.bp" src="os_pickup.bp" />
-  </project>
-  <project path="hardware/qcom/sdm845/display" name="platform/hardware/qcom/sdm845/display" groups="qcom_sdm845" />
-  <project path="hardware/qcom/sdm845/gps" name="platform/hardware/qcom/sdm845/gps" groups="qcom_sdm845" />
-  <project path="hardware/qcom/sdm845/media" name="platform/hardware/qcom/sdm845/media" groups="qcom_sdm845" />
-  <project path="hardware/qcom/sdm845/thermal" name="platform/hardware/qcom/sdm845/thermal" groups="qcom_sdm845" />
-  <project path="hardware/qcom/sdm845/vr" name="platform/hardware/qcom/sdm845/vr" revision="refs/tags/android-9.0.0_r47" groups="qcom_sdm845" />
   <project path="hardware/qcom/wlan" name="platform/hardware/qcom/wlan" groups="qcom_wlan,pdk-qcom" />
   <project path="hardware/ril" name="platform/hardware/ril" groups="pdk" />
   <project path="kernel/configs" name="kernel/configs" groups="vts,pdk" />
@@ -545,7 +529,7 @@
   <project path="packages/apps/Messaging" name="platform/packages/apps/Messaging" groups="pdk-fs" />
   <project path="packages/apps/Music" name="platform/packages/apps/Music" groups="pdk-fs" />
   <project path="packages/apps/MusicFX" name="platform/packages/apps/MusicFX" groups="pdk-fs" />
-  <project path="packages/apps/Nfc" name="platform/packages/apps/Nfc" groups="apps_nfc,pdk-fs" revision="android-9.0.0_r51" />
+  <project path="packages/apps/Nfc" name="platform/packages/apps/Nfc" groups="apps_nfc,pdk-fs" />
   <project path="packages/apps/OneTimeInitializer" name="platform/packages/apps/OneTimeInitializer" groups="pdk-fs" />
   <project path="packages/apps/PackageInstaller" name="platform/packages/apps/PackageInstaller" groups="pdk-cw-fs,pdk-fs" />
   <project path="packages/apps/PhoneCommon" name="platform/packages/apps/PhoneCommon" groups="pdk-cw-fs,pdk-fs" />
@@ -553,7 +537,7 @@
   <project path="packages/apps/Provision" name="platform/packages/apps/Provision" groups="pdk-fs" />
   <project path="packages/apps/QuickSearchBox" name="platform/packages/apps/QuickSearchBox" groups="pdk-fs" />
   <project path="packages/apps/SafetyRegulatoryInfo" name="platform/packages/apps/SafetyRegulatoryInfo" groups="pdk-fs" />
-  <project path="packages/apps/SecureElement" name="platform/packages/apps/SecureElement" revision="refs/tags/android-9.0.0_r51" groups="apps_se,pdk-fs" />
+  <project path="packages/apps/SecureElement" name="platform/packages/apps/SecureElement" groups="apps_se,pdk-fs" />
   <project path="packages/apps/Settings" name="platform/packages/apps/Settings" groups="pdk-fs" />
   <project path="packages/apps/SettingsIntelligence" name="platform/packages/apps/SettingsIntelligence" groups="pdk-fs" />
   <project path="packages/apps/SoundRecorder" name="platform/packages/apps/SoundRecorder" groups="pdk-fs" />
@@ -607,7 +591,7 @@
   <project path="prebuilts/clang/host/darwin-x86" name="platform/prebuilts/clang/host/darwin-x86" groups="pdk,darwin" clone-depth="1" />
   <project path="prebuilts/clang/host/linux-x86" name="platform/prebuilts/clang/host/linux-x86" groups="pdk" clone-depth="1" />
   <project path="prebuilts/deqp" name="platform/prebuilts/deqp" groups="pdk-fs" clone-depth="1" />
-  <project path="prebuilts/devtools" name="platform/prebuilts/devtools" groups="pdk-fs" revision="refs/tags/android-9.0.0_r51" clone-depth="1" />
+  <project path="prebuilts/devtools" name="platform/prebuilts/devtools" groups="pdk-fs" clone-depth="1" />
   <project path="prebuilts/gcc/darwin-x86/aarch64/aarch64-linux-android-4.9" name="platform/prebuilts/gcc/darwin-x86/aarch64/aarch64-linux-android-4.9" groups="pdk,darwin,arm" clone-depth="1" />
   <project path="prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.9" name="platform/prebuilts/gcc/darwin-x86/arm/arm-linux-androideabi-4.9" groups="pdk,darwin,arm" clone-depth="1" />
   <project path="prebuilts/gcc/darwin-x86/host/i686-apple-darwin-4.2.1" name="platform/prebuilts/gcc/darwin-x86/host/i686-apple-darwin-4.2.1" groups="pdk,darwin" clone-depth="1" />
@@ -632,7 +616,7 @@
   <project path="prebuilts/maven_repo/google-play-service-client-libraries-3p" name="platform/prebuilts/maven_repo/google-play-service-client-libraries-3p" clone-depth="1" />
   <project path="prebuilts/misc" name="platform/prebuilts/misc" groups="pdk" clone-depth="1" />
   <project path="prebuilts/ndk" name="platform/prebuilts/ndk" groups="pdk" clone-depth="1" />
-  <project path="prebuilts/ktlint" name="platform/prebuilts/ktlint" revision="refs/tags/android-9.0.0_r51" clone-depth="1" />
+  <project path="prebuilts/ktlint" name="platform/prebuilts/ktlint" clone-depth="1" />
   <project path="prebuilts/python/darwin-x86/2.7.5" name="platform/prebuilts/python/darwin-x86/2.7.5" groups="darwin,pdk,pdk-cw-fs,pdk-fs" clone-depth="1" />
   <project path="prebuilts/python/linux-x86/2.7.5" name="platform/prebuilts/python/linux-x86/2.7.5" groups="linux,pdk,pdk-cw-fs,pdk-fs" clone-depth="1" />
   <project path="prebuilts/qemu-kernel" name="platform/prebuilts/qemu-kernel" groups="pdk" clone-depth="1" />
@@ -657,7 +641,7 @@
   <project path="system/libhidl" name="platform/system/libhidl" groups="pdk" />
   <project path="system/libhwbinder" name="platform/system/libhwbinder" groups="pdk" />
   <project path="system/libufdt" name="platform/system/libufdt" groups="pdk" />
-  <project path="system/libvintf" name="platform/system/libvintf" revision="refs/tags/android-9.0.0_r51" groups="pdk" />
+  <project path="system/libvintf" name="platform/system/libvintf" groups="pdk" />
   <project path="system/media" name="platform/system/media" groups="pdk" />
   <project path="system/netd" name="platform/system/netd" groups="pdk" />
   <project path="system/nfc" name="platform/system/nfc" groups="pdk" />
@@ -681,7 +665,7 @@
   <project path="test/vts-testcase/hal" name="platform/test/vts-testcase/hal" groups="vts,pdk" />
   <project path="test/vts-testcase/hal-trace" name="platform/test/vts-testcase/hal-trace" groups="vts,pdk" />
   <project path="test/vts-testcase/kernel" name="platform/test/vts-testcase/kernel" groups="vts,pdk" />
-  <project path="test/vts-testcase/nbu" name="platform/test/vts-testcase/nbu" revision="refs/tags/android-9.0.0_r51" groups="vts,pdk" />
+  <project path="test/vts-testcase/nbu" name="platform/test/vts-testcase/nbu" groups="vts,pdk" />
   <project path="test/vts-testcase/performance" name="platform/test/vts-testcase/performance" groups="vts,pdk" />
   <project path="test/vts-testcase/security" name="platform/test/vts-testcase/security" groups="vts,pdk" />
   <project path="test/vts-testcase/vndk" name="platform/test/vts-testcase/vndk" groups="vts,pdk" />
@@ -708,9 +692,9 @@
   <project path="tools/test/connectivity" name="platform/tools/test/connectivity" groups="pdk" />
   <project path="tools/tradefederation/core" name="platform/tools/tradefederation" groups="pdk,tradefed" />
   <project path="tools/tradefederation/contrib" name="platform/tools/tradefederation/contrib" groups="pdk,tradefed" />
-
+  
   <repo-hooks in-project="platform/tools/repohooks" enabled-list="pre-upload" />
-
+  
   <!-- OmniROM -->
   <include name="omni-default.xml" />
 </manifest>
