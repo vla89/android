@@ -113,7 +113,6 @@
   <remove-project name="platform/hardware/qcom/msm8x26" />
   <remove-project name="platform/hardware/qcom/msm8x27" />
   <remove-project name="platform/hardware/qcom/msm8x84" />
-  <remove-project name="platform/hardware/qcom/sdm845/bt" />
   <remove-project name="platform/hardware/qcom/sdm845/display" />
   <remove-project name="platform/hardware/qcom/sdm845/gps" />
   <remove-project name="platform/hardware/qcom/sdm845/media" />
