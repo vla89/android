@@ -8,6 +8,9 @@
            remote="aosp"
            sync-c="true"
            sync-j="12" />
+  
+  <remote name="sony" fetch="https://github.com/sonyxperiadev/" />
+  <remote name="vla89" fetch="https://github.com/vla89/" />
 
   <project path="build/make" name="platform/build" groups="pdk" >
     <copyfile src="core/root.mk" dest="Makefile" />
